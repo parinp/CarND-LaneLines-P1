@@ -1,8 +1,8 @@
 # **Finding Lane Lines on the Road** 
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-<video width="320" height="240" autoplay loop>
-    <source src="test_videos_output/challenge.mp4" type=video/mp4>
+<video width="320" height="240" autoplay loop muted playsinline>
+    <source src="test_videos_output/challenge.mp4" type="video/mp4" />
 </video>
 
 Overview
