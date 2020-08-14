@@ -18,9 +18,9 @@ As a challenge to myself I also attempted the **Challenge video** for this proje
 Table of Contents
 ---
 
-- [Getting Started](#getting-started)
-- [Testing on Images](#testing-on-images)
-- [Waking]
+1. [Getting Started](#getting-started)
+2. [Testing on Images](#testing-on-images)
+3. [Waking]
 
 
 Getting Started
@@ -30,8 +30,7 @@ Getting Started
 
 This project has been completed on the Jupyter Notebook running Python 3 with the following packages:
 
-```
-
+```python
 import os
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
@@ -40,19 +39,17 @@ import cv2
 import math
 from moviepy.editor import VideoFileClip
 from IPython.display import HTML
-
-
 ```
 
 Additionally, complementary **Helper Functions** were created in order to structure the code in a more efficient way.  The functions added are:
 
-`get_roi()` Helps in defining the region of the pciture we are interested in
-`display_img` In order to help visualize and compare images
-`convert_hls()` Convert _RGB_ images into _HLS_ Color space
-`convert_hsv()` Convert _RGB_ images into _HSV_ Color space
-`isolate_yellow()` Specifically isolates yellow lines in a given image
-`isolate_white()` Specifically isolates white lines in a given image
-`isolate_lines()` Combines yellow and white isolated lines together
+`get_roi()` Helps in defining the region of the pciture we are interested in  
+`display_img` In order to help visualize and compare images  
+`convert_hls()` Convert _RGB_ images into _HLS_ Color space  
+`convert_hsv()` Convert _RGB_ images into _HSV_ Color space  
+`isolate_yellow()` Specifically isolates yellow lines in a given image  
+`isolate_white()` Specifically isolates white lines in a given image  
+`isolate_lines()` Combines yellow and white isolated lines together  
 
 
 Testing on Images
@@ -64,18 +61,18 @@ The way Canny Edge Detection works is that this method returns a high response v
 
 This can be seen in the picture provided by Udacity below where points A,C and E would be retained while the rest would be discarded.
 
-![Canny]("readme_files/canny1.png")
+![Canny]["readme_files/canny1.png"]  
 
 So to start, after hours of trial and error with RGB images I still was not results to my liking to I chose to play around with different color spaces other than RGB and is it turned out, I was able to get better results.  
 The two color spaces I chose to use are HSV and HLS Color space.  Particularly because I am seeing that **yellow lines** are displayed clearer in HSV format and **white lines** are displayed clearer in HLS format when compared with RBG format.  This can be seen from the picture below.
 
-![Color Space0]("readme_files/Color_space0.png")
-![Color Space1]("readme_files/Color_space1.png")
-![Color Space2]("readme_files/Color_space2.png")
-![Color Space3]("readme_files/Color_space3.png")
-![Color Space4]("readme_files/Color_space4.png")
-![Color Space5]("readme_files/Color_space5.png")
-![Color Space6]("readme_files/Color_space6.png")
+![Color Space0]["readme_files/Color_space0.png"]  
+![Color Space1]["readme_files/Color_space1.png"]  
+![Color Space2]["readme_files/Color_space2.png"]  
+![Color Space3]["readme_files/Color_space3.png"]  
+![Color Space4]["readme_files/Color_space4.png"]  
+![Color Space5]["readme_files/Color_space5.png"]  
+![Color Space6]["readme_files/Color_space6.png"]  
 
 
 ### Reflection
