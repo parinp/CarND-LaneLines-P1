@@ -61,18 +61,18 @@ The way Canny Edge Detection works is that this method returns a high response v
 
 This can be seen in the picture provided by Udacity below where points A,C and E would be retained while the rest would be discarded.
 
-![Canny]["readme_files/canny1.png"]  
+![Canny](readme_files/canny1.png)  
 
 So to start, after hours of trial and error with RGB images I still was not results to my liking to I chose to play around with different color spaces other than RGB and is it turned out, I was able to get better results.  
 The two color spaces I chose to use are HSV and HLS Color space.  Particularly because I am seeing that **yellow lines** are displayed clearer in HSV format and **white lines** are displayed clearer in HLS format when compared with RBG format.  This can be seen from the picture below.
 
-![Color Space0]["readme_files/Color_space0.png"]  
-![Color Space1]["readme_files/Color_space1.png"]  
-![Color Space2]["readme_files/Color_space2.png"]  
-![Color Space3]["readme_files/Color_space3.png"]  
-![Color Space4]["readme_files/Color_space4.png"]  
-![Color Space5]["readme_files/Color_space5.png"]  
-![Color Space6]["readme_files/Color_space6.png"]  
+![Color Space0](readme_files/Color_space0.png)  
+![Color Space1](readme_files/Color_space1.png)  
+![Color Space2](readme_files/Color_space2.png)  
+![Color Space3](readme_files/Color_space3.png)  
+![Color Space4](readme_files/Color_space4.png)  
+![Color Space5](readme_files/Color_space5.png)  
+![Color Space6](readme_files/Color_space6.png)  
 
 
 ### Reflection
