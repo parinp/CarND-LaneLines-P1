@@ -66,13 +66,13 @@ This can be seen in the picture provided by Udacity below where points A,C and E
 So to start, after hours of trial and error with RGB images I still was not results to my liking to I chose to play around with different color spaces other than RGB and is it turned out, I was able to get better results.  
 The two color spaces I chose to use are HSV and HLS Color space.  Particularly because I am seeing that **yellow lines** are displayed clearer in HSV format and **white lines** are displayed clearer in HLS format when compared with RBG format.  This can be seen from the picture below.
 
-![Color Space0](readme_files/Color_Space0.png)  
-![Color Space1](readme_files/Color_Space1.png)  
-![Color Space2](readme_files/Color_Space2.png)  
-![Color Space3](readme_files/Color_Space3.png)  
-![Color Space4](readme_files/Color_Space4.png)  
-![Color Space5](readme_files/Color_Space5.png)  
-![Color Space6](readme_files/Color_Space6.png)  
+![Color Space0](readme_files/Color_Space0.jpg)  
+![Color Space1](readme_files/Color_Space1.jpg)  
+![Color Space2](readme_files/Color_Space2.jpg)  
+![Color Space3](readme_files/Color_Space3.jpg)  
+![Color Space4](readme_files/Color_Space4.jpg)  
+![Color Space5](readme_files/Color_Space5.jpg)  
+![Color Space6](readme_files/Color_Space6.jpg)  
 
 
 ### Reflection
