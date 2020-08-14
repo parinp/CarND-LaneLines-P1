@@ -69,7 +69,7 @@ So to start, after hours of trial and error with **RGB images**, the results wer
 
 HSL Color Space            |  HSV Color Space
 :-------------------------:|:-------------------------:
-![](readme_files/hsl.png)  |  ![](readme_files/hsl.png)
+![](readme_files/hsl.png)  |  ![](readme_files/hsv.png)
 
 The two color spaces I chose to use were HSV and HSL Color space.  I chose these 2 particularly because I noticed that **yellow lines** are displayed clearer in HSV format and **white lines** are displayed clearer in HSL format when compared with RBG format.  This can be seen from the picture below.
 
