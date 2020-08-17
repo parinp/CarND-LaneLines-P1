@@ -69,10 +69,11 @@ Isolating Lane Lines
 
 So to start, after hours of trial and error with **RGB images**, the results were still not to my liking.  I then chose to play around with different color spaces other than RGB and as it turned out, I was able to get better results.  
 
+<center>
 HSL Color Space            |  HSV Color Space
 :-------------------------:|:-------------------------:
 ![](readme_files/hsl.png)  |  ![](readme_files/hsv.png)
-
+</center>
 The two color spaces I chose to use were HSV and HSL Color space.  I chose these 2 particularly because in these 2 colors spaces, the respective colors will be easier to isolate than in RGB.  
 
 As seen in the image, for **HSL colors** the *hue* and *saturation* cover all ranges of colors, but *lightness* factor contributes to how dark that color represents.  This made it easy to just filter white lines based on the *lightness* factor.
@@ -155,9 +156,14 @@ I created a `KalmanLaneMemory` Class and provided neceassry functions in order t
 
 The difference in results before and after applying Kalman Filter can be seen when the 2 videos are juxtposed with each other.
 
+<center>
+
 Without Kalman Filter            |  With Kalman Filter
 :-------------------------:|:-------------------------:
 ![](readme_files/No_KF.gif)  |  ![](readme_files/KF.gif)
+
+    
+</center>
 
 With this pipeline and lane prediction, I was able to complete the Challange video as seen from the 1st video at the of this writeup.
 
