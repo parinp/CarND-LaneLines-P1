@@ -76,6 +76,7 @@ HSL Color Space            |  HSV Color Space
 ![](readme_files/hsl.png)  |  ![](readme_files/hsv.png)
     
 </center>
+
 The two color spaces I chose to use were HSV and HSL Color space.  I chose these 2 particularly because in these 2 colors spaces, the respective colors will be easier to isolate than in RGB.  
 
 As seen in the image, for **HSL colors** the *hue* and *saturation* cover all ranges of colors, but *lightness* factor contributes to how dark that color represents.  This made it easy to just filter white lines based on the *lightness* factor.
