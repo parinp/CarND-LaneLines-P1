@@ -72,7 +72,13 @@ HSL Color Space            |  HSV Color Space
 :-------------------------:|:-------------------------:
 ![](readme_files/hsl.png)  |  ![](readme_files/hsv.png)
 
-The two color spaces I chose to use were HSV and HSL Color space.  I chose these 2 particularly because I noticed that **yellow lines** are displayed clearer in HSV format and **white lines** are displayed clearer in HSL format when compared with RBG format.  This can be seen from the picture below.
+The two color spaces I chose to use were HSV and HSL Color space.  I chose these 2 particularly because in these 2 colors spaces, the respective colors will be easier to isolate than in RGB.  
+
+As seen in the image, for **HSL colors** the *hue* and *saturation* cover all ranges of colors, but *lightness* factor contributes to how dark that color represents.  This made it easy to just filter white lines based on the *lightness* factor.
+
+As for **HSV colors**, as seen in the image, the yellow portion is bound to a small range in the *hue* and a larger part of *saturation* and *value* where having a large range dictates the different shades of yellow.  This is done so because yellow migth have different shades in an image and we want to correctly isolate the color.
+
+The resutls can be seen below.
 
 ![Color Space0](readme_files/Color_Space0.png)  
 ![Color Space1](readme_files/Color_Space1.png)  
@@ -96,13 +102,13 @@ I then proceeded to isolate the lane lines from the image.
 
 The results are looking promising!  I then combined these 2 steps together before grayscaling them and applying Canny Edge Detection.
 
-![Combined0](readme/Combined0.png)
-![Combined1](readme/Combined1.png)
-![Combined2](readme/Combined2.png)
-![Combined3](readme/Combined3.png)
-![Combined4](readme/Combined4.png)
-![Combined5](readme/Combined5.png)
-![Combined6](readme/Combined6.png)
+![Combined0](readme/Combined0.png)  
+![Combined1](readme/Combined1.png)  
+![Combined2](readme/Combined2.png)  
+![Combined3](readme/Combined3.png)  
+![Combined4](readme/Combined4.png)  
+![Combined5](readme/Combined5.png)  
+![Combined6](readme/Combined6.png)  
 
 
 Line Detection
@@ -148,7 +154,9 @@ I created a `KalmanLaneMemory` Class and provided neceassry functions in order t
 
 The difference in results before and after applying Kalman Filter can be seen when the 2 videos are juxtposed with each other.
 
-![No KF](readme_files/No_KF.gif) ![KF](readme_files/KF.gif)
+Without Kalman Filter            |  With Kalman Filter
+:-------------------------:|:-------------------------:
+![](readme_files/No_KF.gif)  |  ![](readme_files/KF.gif)
 
 With this pipeline and lane prediction, I was able to complete the Challange video as seen from the 1st video at the of this writeup.  Overall this project was very enjoyable and enabled me to learn more about lane detection and `OpenCV`.
 
