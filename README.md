@@ -70,9 +70,11 @@ Isolating Lane Lines
 So to start, after hours of trial and error with **RGB images**, the results were still not to my liking.  I then chose to play around with different color spaces other than RGB and as it turned out, I was able to get better results.  
 
 <center>
+    
 HSL Color Space            |  HSV Color Space
 :-------------------------:|:-------------------------:
 ![](readme_files/hsl.png)  |  ![](readme_files/hsv.png)
+    
 </center>
 The two color spaces I chose to use were HSV and HSL Color space.  I chose these 2 particularly because in these 2 colors spaces, the respective colors will be easier to isolate than in RGB.  
 
