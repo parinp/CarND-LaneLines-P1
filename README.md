@@ -22,6 +22,7 @@ Table of Contents
 2. [Isolating Lane Lines](#isolating-lane-lines)
 3. [Line Detection](#line-detection)
 4. [Lane Prediction](#lane-prediction)
+5. [Reflection](#reflection)
 
 
 Getting Started
@@ -102,13 +103,13 @@ I then proceeded to isolate the lane lines from the image.
 
 The results are looking promising!  I then combined these 2 steps together before grayscaling them and applying Canny Edge Detection.
 
-![Combined0](readme/Combined0.png)  
-![Combined1](readme/Combined1.png)  
-![Combined2](readme/Combined2.png)  
-![Combined3](readme/Combined3.png)  
-![Combined4](readme/Combined4.png)  
-![Combined5](readme/Combined5.png)  
-![Combined6](readme/Combined6.png)  
+![Combined0](readme_files/Combined0.png)  
+![Combined1](readme_files/Combined1.png)  
+![Combined2](readme_files/Combined2.png)  
+![Combined3](readme_files/Combined3.png)  
+![Combined4](readme_files/Combined4.png)  
+![Combined5](readme_files/Combined5.png)  
+![Combined6](readme_files/Combined6.png)  
 
 
 Line Detection
@@ -158,18 +159,20 @@ Without Kalman Filter            |  With Kalman Filter
 :-------------------------:|:-------------------------:
 ![](readme_files/No_KF.gif)  |  ![](readme_files/KF.gif)
 
-With this pipeline and lane prediction, I was able to complete the Challange video as seen from the 1st video at the of this writeup.  Overall this project was very enjoyable and enabled me to learn more about lane detection and `OpenCV`.
+With this pipeline and lane prediction, I was able to complete the Challange video as seen from the 1st video at the of this writeup.
 
 
 Reflection
 ---
 
-### 2. Identify potential shortcomings with your current pipeline
+Overall this project was very enjoyable and enabled me to learn more about lane detection and `OpenCV` as well as looking further on how to improve upon Lane Detection.
+
+### Identify potential shortcomings with your current pipeline
 
 
 One potential shortcoming of this method is its inability to detect where the road will be heading.  It does not know whether there will be a curve ahead or not.  However, it will detect straight lines with great accuracy.
 
 
-### 3. Suggest possible improvements to your pipeline
+### Suggest possible improvements to your pipeline
 
 Instead of fitting a 1st order polynomial, maybe a 2nd order polynomial could be included in order to correctly idently the lanes as well as knowing the curvature of the lanes, whether it is a turn or a straight line.  One thing that comes to mind is using perspective transform and then fitting a 2nd order polynomial.
