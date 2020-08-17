@@ -20,7 +20,8 @@ Table of Contents
 
 1. [Getting Started](#getting-started)
 2. [Isolating Lane Lines](#isolating-lane-lines)
-3. [Waking]
+3. [Line Detection](#line-detection)
+4. [Lane Prediction](#lane-prediction)
 
 
 Getting Started
@@ -93,39 +94,74 @@ I then proceeded to isolate the lane lines from the image.
 ![Isolated Lines5](readme_files/Isolated_Lines5.png)
 ![Isolated Lines6](readme_files/Isolated_Lines6.png)
 
+The results are looking promising!  I then combined these 2 steps together before grayscaling them and applying Canny Edge Detection.
+
+![Combined0](readme/Combined0.png)
+![Combined1](readme/Combined1.png)
+![Combined2](readme/Combined2.png)
+![Combined3](readme/Combined3.png)
+![Combined4](readme/Combined4.png)
+![Combined5](readme/Combined5.png)
+![Combined6](readme/Combined6.png)
 
 
+Line Detection
+---
 
-The way Canny Edge Detection works is that this method returns a high response value wherever this a sharp change in gradient of pixels in an image and a low response value where there is no sharp change.  This results in the picture retaining only the lines where there is a sharp change in pixel gradient.  
+Line detection is a 3 step process, first we sketch the lines that are present in an image, then we determine which lines in the picture are part of a lane line or are they something else.  Fortunately, `OpenCV` provides us with all the tools necessary to achieve this.
 
-This can be seen in the picture provided by Udacity below where points A,C and E would be retained while the rest would be discarded.
+Firstly, to sketch or detect lines in an image we will be using **Canny Edge Detection** `cv2.Canny()`.  To give an overview, Canny Edge Detection returns a high response value wherever this a sharp change in gradient of pixels and a low response value where there is no sharp change in an image.  This results in an image retaining only the lines where there are sharp changes in pixel gradient.  Hence, the images will be converted to `grayscale` before applying the Canny Edge Detection method.
 
-![Canny](readme_files/canny1.png)    
+This is illustrated in the picture provided by Udacity below where points A, C and E would be retained while the rest would be discarded.
+
+![Canny](readme_files/canny1.png)
+
+Secondly, after being able to sketch the lines, we will have identify all those lines that belong to a lane as accurate as possible.  **Hough Lines** `cv2.HoughLines()` is the best method for this.  Since lane lines are rather straight, one thing that is common for lane lines is its gradient.  This is the core in Hough Transform, different points of a line that have the same gradient will always interestect at the same point after using Hough Transform.  This is illustrated in the figure below.  I won't be covering the topic here but here is more information on [Hough Lines Transformation.](https://medium.com/@tomasz.kacmajor/hough-lines-transform-explained-645feda072ab)
+
+![Hough Line](readme_files/HL.jpg)
+
+Lastly, even after putting together Canny edge detection and hough lines, the lines detected will still be in batches and not show a straight line.  So in order to generate 1 single line that can be displayed and understood by our algorithm, we have to extrapolate it.  This is done by creating 2 additional functions `meas_line()` and `corrrected_lines()`.  These 2 functions take in all the lines detected by Hough Lines and separates them into left line and right line, then the lines will be fitted to a 1 degree polinomial.  This polynomial line would then be used as a reflection of the lane lines detected and displayed on the image.  This can be seen from the pictures below.
+
+![line0](test_images_output/challenge_4s.png)
+![line1](test_images_output/solidWhiteCurve.png)
+![line2](test_images_output/solidWhiteRight.png)
+![line3](test_images_output/solidYellowCurve.png)
+![line4](test_images_output/solidYellowCurve2.png)
+![line5](test_images_output/solidYellowLeft.png)
+![line6](test_images_output/whiteCarLaneSwitch.png)
 
 
-### Reflection
+Lane Prediction
+---
 
-### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
+All the necessary components are ready for us to build the pipeline.  To keep things simple I've added all the functions to a new function `pipeline()`.  As seen in the video below, the algorithm was able to correctly identify lane lines in the video.  However, the lines are fluctuating too much and I needed to smoothen out the transition from lines detected in 1 frame to the next.  Hence, I turned to used a Kalman Filter.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+<p align="center">
+    <img src="readme_files/No_KF.gif">
+</p>
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+### Kalman Filter
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+Kalman Filters provide the necessary transition and prediction of lane lines.  The reason for using kalman filters is base more on bias rather than experimental.  Nevertheless, there have been many other resarches that have been using Kalman Filters for Lane Line Detections and have given promising results.  I chose to use a 2D Kalman Filter to predict positions of the left line and right line on an image.
 
-![alt text][image1]
+I created a `KalmanLaneMemory` Class and provided neceassry functions in order to **Update** and **Predict** lane lines.  I think implemented the same pipeline but only now running the pipeline results through a **Kalman Filter** before returning the desired lane lines.
 
+The difference in results before and after applying Kalman Filter can be seen when the 2 videos are juxtposed with each other.
+
+![No KF](readme_files/No_KF.gif) ![KF](readme_files/KF.gif)
+
+With this pipeline and lane prediction, I was able to complete the Challange video as seen from the 1st video at the of this writeup.  Overall this project was very enjoyable and enabled me to learn more about lane detection and `OpenCV`.
+
+
+Reflection
+---
 
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
+One potential shortcoming of this method is its inability to detect where the road will be heading.  It does not know whether there will be a curve ahead or not.  However, it will detect straight lines with great accuracy.
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+Instead of fitting a 1st order polynomial, maybe a 2nd order polynomial could be included in order to correctly idently the lanes as well as knowing the curvature of the lanes, whether it is a turn or a straight line.  One thing that comes to mind is using perspective transform and then fitting a 2nd order polynomial.
